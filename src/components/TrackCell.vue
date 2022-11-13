@@ -8,11 +8,11 @@
       </button>
     </p>
     <p class="text-[1.2rem]">{{ collectionName }}</p>
-    <Suspense>
+    <Suspense v-if="lookup && artistId">
       <template #default>
         <NuxtErrorBoundary>
           <template #default>
-            <LazyLookupArtist v-if="lookup && artistId" class="mt-[8px]" :id="artistId" />
+            <LazyLookupArtist class="mt-[8px]" :id="artistId" />
           </template>
           <template #error="{ error }">
             <p class="mt-[8px]">{{ error }}</p>

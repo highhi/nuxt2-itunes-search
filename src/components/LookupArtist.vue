@@ -17,8 +17,10 @@ const state = reactive({
   link: '',
 })
 
+console.log(props.id)
 
-const { data } = await useFetch<GetResults>(`/api/artists/${encodeURIComponent(props.id)}`)
+
+const { data } = await useFetch<GetResults>(`/api/artists/${encodeURIComponent(props.id)}`, { key: String(props.id) })
 
 if (data.value != null) {
   state.amgId = data.value.results[0].amgArtistId
