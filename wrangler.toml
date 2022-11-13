@@ -1,0 +1,6 @@
+name = "itunes-search"
+main = "./.output/server/index.mjs"
+workers_dev = true
+compatibility_date = "2022-11-10"
+[site]
+bucket = ".output/public"

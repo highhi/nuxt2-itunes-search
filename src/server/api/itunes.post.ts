@@ -10,6 +10,7 @@ export default defineEventHandler<ItunesSearchResults>(async (event) => {
     lang: 'ja_jp',
     media: ItunesMedia['Music'],
   })
-  const res = await searchItunes(options) as ItunesSearchResults
-  return res
+
+  const res: string = await $fetch(`https://itunes.apple.com/search?${options.toURI()}`)
+  return JSON.parse(res)
 })
