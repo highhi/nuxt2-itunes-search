@@ -4,11 +4,7 @@
       <div class="mr-[14px]">
         <img :src="track.artworkUrl60" width="60" height="60" :alt="track.trackName">
       </div>
-      <div class="flex-1">
-        <p class="text-[1.6rem] mb-[4px]">{{ track.trackName }}</p>
-        <p class="text-[1.2rem]">{{ track.artistName }}</p>
-        <p class="text-[1.2rem]">{{ track.collectionName }}</p>
-      </div>
+      <TrackCell :artistId="track.artistId" :trackName="track.trackName" :artistName="track.artistName" :collectionName="track.collectionName"></TrackCell>
       <div>
         <audio controls crossorigin="anonymous" preload="none" :src="track.previewUrl"></audio>
       </div>

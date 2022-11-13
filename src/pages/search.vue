@@ -2,7 +2,7 @@
   <div class="p-[20px] max-w-[980px] m-auto">
     <h1 class="font-bold text-[3rem] text-center mb-[14px]">iTunes Search</h1>
     <SearchForm @search="search" :word="searchWord" />
-    <TrackList :tracks="searchResults.results" />
+    <TrackList v-if="!pending" :tracks="searchResults.results" />
   </div>
 </template>
 
@@ -19,7 +19,7 @@ const searchResults = ref<ItunesSearchResults>({
 
 onUnmounted(() => clearSearchWord())
 
-const { data, error, refresh } = await useAsyncData<ItunesSearchResults, FetchError>('search', () => $fetch('/api/itunes', {
+const { data, error, refresh, pending } = await useAsyncData<ItunesSearchResults, FetchError>('search', () => $fetch('/api/itunes', {
   method: 'post',
   body: { term: searchWord.value.trim() }
 }), {
